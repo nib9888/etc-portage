@@ -1,0 +1,3 @@
+# Mask all overlay packages
+*/*::trolltoo
+*/*::farfetchd
