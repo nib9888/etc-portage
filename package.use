@@ -6,7 +6,7 @@
 
 #
 # Common USE Flags
-# 
+#
 
 
 # Savedconfig
@@ -21,12 +21,20 @@ app-admin/slstatus savedconfig
 www-client/links -X
 app-misc/neofetch -X
 
+# Add X support
+dev-qt/qtgui X
+
 # Exclude these packages from USE="minimal"
 app-editors/vim -minimal
 app-editors/vim-core -minimal
 net-print/hplip -minimal
 virtual/ssh -minimal
 x11-base/xorg-server -minimal
+
+# Enable documentation
+media-sound/mpd doc libsoxr
+media-sound/mpc doc
+gui-libs/greetd man
 
 
 #
@@ -35,7 +43,7 @@ x11-base/xorg-server -minimal
 
 
 # Busybox can't be static with pam
-sys-apps/busybox -pam
+sys-apps/busybox -pam static
 
 # Enable video support for ffmpeg
 media-video/ffmpeg v4l
@@ -45,9 +53,6 @@ dev-vcs/git perl
 
 # Enable mp3 support in kid3
 media-sound/kid3 mp3
-# Enable documentation for mpd
-media-sound/mpd doc
-media-sound/mpc doc
 
 # JS Support
 app-text/mupdf javascript
@@ -60,7 +65,7 @@ media-fonts/noto cjk
 
 # Enable video support
 media-video/obs v4l
-media-video/obs-studio v4l vlc
+media-video/obs-studio v4l -vlc
 
 # OpenGL
 x11-misc/picom opengl
@@ -70,148 +75,18 @@ dev-python/PyQt5 widgets gui
 # Use system llvm
 dev-lang/rust system-llvm
 
+# Disable wayland elogind
+gui-libs/wlroots seatd -elogind
+
 # Conflicts with openrc and dracut
 sys-apps/s6-linux-init -sysv-utils
 
 # Always useful to have static execline - Also, documentation is important
-dev-lang/execline static static-libs 
+dev-lang/execline static static-libs
 dev-libs/skalibs static-libs doc
-
-# Disable support for joystick
-games-util/steam-launcher -joystick
 
 # Compile support for terminal buffers in vim (:term)
 app-editors/vim terminal
-
-
-#
-# 32-BIT DEPENDENCIES
-#
-
-
-# required by x11-libs/libXrandr-1.5.2::gentoo
-# required by media-libs/mesa-20.2.4::gentoo[X]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=x11-libs/libX11-1.7.0 abi_x86_32
-# required by x11-libs/libxcb-1.14::gentoo
-# required by media-libs/mesa-20.2.4::gentoo[X]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=x11-libs/libXau-1.0.9-r1 abi_x86_32
-# required by media-libs/mesa-20.2.4::gentoo[X]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=x11-libs/libxcb-1.14 abi_x86_32
-# required by x11-libs/libxcb-1.14::gentoo
-# required by media-libs/mesa-20.2.4::gentoo[X]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=x11-libs/libXdmcp-1.1.3 abi_x86_32
-# required by x11-libs/libxcb-1.14::gentoo
-# required by media-libs/mesa-20.2.4::gentoo[X]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=x11-base/xcb-proto-1.14.1 abi_x86_32
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=virtual/opengl-7.0-r2 abi_x86_32
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=media-libs/mesa-20.2.4 abi_x86_32
-# required by media-libs/mesa-20.2.4::gentoo
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=dev-libs/expat-2.2.8 abi_x86_32
-# required by media-libs/mesa-20.2.4::gentoo
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=media-libs/libglvnd-1.3.2-r2 abi_x86_32
-# required by sys-devel/llvm-11.0.0::gentoo
-# required by media-libs/mesa-20.2.4::gentoo[llvm,-video_cards_r600,-video_cards_radeon,gallium,-opencl,-video_cards_radeonsi]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=sys-libs/zlib-1.2.11-r2 abi_x86_32
-# required by media-libs/mesa-20.2.4::gentoo
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=x11-libs/libdrm-2.4.103 abi_x86_32
-# required by media-libs/mesa-20.2.4::gentoo[X]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=x11-libs/libxshmfence-1.3-r2 abi_x86_32
-# required by media-libs/mesa-20.2.4::gentoo[X]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=x11-libs/libXdamage-1.1.5 abi_x86_32
-# required by x11-libs/libXrandr-1.5.2::gentoo
-# required by media-libs/mesa-20.2.4::gentoo[X]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=x11-libs/libXext-1.3.4 abi_x86_32
-# required by media-libs/mesa-20.2.4::gentoo[X]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=x11-libs/libXxf86vm-1.1.4-r2 abi_x86_32
-# required by x11-libs/libXdamage-1.1.5::gentoo
-# required by media-libs/mesa-20.2.4::gentoo[X]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=x11-libs/libXfixes-5.0.3-r3 abi_x86_32
-# required by media-libs/mesa-20.2.4::gentoo[zstd]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=app-arch/zstd-1.4.5 abi_x86_32
-# required by media-libs/mesa-20.2.4::gentoo[llvm,-video_cards_r600,-video_cards_radeon,gallium,-opencl,-video_cards_radeonsi]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=sys-devel/llvm-11.0.0 abi_x86_32
-# required by media-libs/mesa-20.2.4::gentoo[X]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=x11-libs/libXrandr-1.5.2 abi_x86_32
-# required by x11-libs/libXrandr-1.5.2::gentoo
-# required by media-libs/mesa-20.2.4::gentoo[X]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=x11-libs/libXrender-0.9.10-r2 abi_x86_32
-# required by sys-devel/llvm-11.0.0::gentoo[libffi]
-# required by media-libs/mesa-20.2.4::gentoo[llvm,-video_cards_r600,-video_cards_radeon,gallium,-opencl,-video_cards_radeonsi]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=dev-libs/libffi-3.3-r2 abi_x86_32
-# required by sys-devel/llvm-11.0.0::gentoo[ncurses]
-# required by media-libs/mesa-20.2.4::gentoo[llvm,-video_cards_r600,-video_cards_radeon,gallium,-opencl,-video_cards_radeonsi]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=sys-libs/ncurses-6.2-r1 abi_x86_32
-# required by x11-libs/libdrm-2.4.103::gentoo[video_cards_intel]
-# required by media-libs/mesa-20.2.4::gentoo
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.67::steam-overlay[steamruntime]
-# required by steam-launcher (argument)
->=x11-libs/libpciaccess-0.16 abi_x86_32
 
 
 #
@@ -226,7 +101,7 @@ app-text/xmlto text
 dev-libs/libpcre2 pcre32 pcre16
 
 #www-clients/firefox
-dev-lang/python sqlite
+dev-lang/python sqlite tk
 media-libs/libpng apng
 media-libs/libvpx postproc
 
@@ -258,3 +133,85 @@ dev-java/swt cairo
 
 #sys-apps/flatpak
 dev-util/ostree curl
+media-video/mpv -uchardet
+media-sound/pulseaudio alsa
+media-libs/libcanberra alsa
+# required by gui-libs/wlroots-0.12.0::gentoo[X]
+# required by gui-wm/river-9999::wayland-desktop
+# required by river (argument)
+>=x11-base/xorg-server-1.20.11 wayland
+gui-wm/sway -elogind seatd
+gui-apps/swayidle -elogind
+sys-auth/seatd -elogind
+# required by media-libs/mesa-20.3.5::gentoo[wayland]
+# required by dev-qt/qtwayland-5.15.2-r1::gentoo
+# required by dev-qt/qtgui-5.15.2-r1::gentoo[wayland]
+# required by @selected
+# required by @world (argument)
+>=dev-libs/wayland-1.19.0 abi_x86_32
+# required by dev-libs/wayland-1.19.0::gentoo
+# required by media-libs/gst-plugins-base-1.16.3::gentoo[wayland,opengl,gles2]
+# required by app-office/libreoffice-bin-6.4.7.2_p3::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-util/wayland-scanner-1.19.0 abi_x86_32
+# required by dev-qt/qtwayland-5.15.2-r1::gentoo
+>=dev-qt/qtgui-5.15.2-r1 egl
+# required by media-sound/jack2-1.9.18::gentoo[opus]
+# required by virtual/jack-2::gentoo
+# required by media-sound/qjackctl-0.9.2::gentoo
+# required by qjackctl (argument)
+>=media-libs/opus-1.3.1-r1 custom-modes
+app-crypt/pinentry gnome-keyring
+# required by gui-wm/sway-1.6::gentoo
+# required by @selected
+# required by @world (argument)
+>=gui-libs/wlroots-0.13.0 seatd
+dev-libs/bemenu -X doc -ncurses
+media-video/pipewire -aac pipewire-alsa
+dev-java/openjdk-bin -gentoo-vm alsa
+sys-devel/gcc pgo
+# required by dev-util/wayland-scanner
+# required by dev-util/wayland
+dev-libs/expat abi_x86_32
+# required by dev-util/wayland-scanner
+# required by dev-util/wayland
+dev-libs/libffi abi_x86_32
+# required by x11-libs/pango-1.48.7::gentoo
+# required by www-client/firefox-bin-90.0.1::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-libs/freetype-2.10.4 harfbuzz
+gui-wm/wayfire -system-wfconfig system-wlroots X
+# required by net-wireless/aircrack-ng-1.6_p20200722::gentoo[airdrop-ng]
+# required by aircrack-ng (argument)
+>=net-wireless/lorcon-0.0_p20200214 python
+media-gfx/imagemagick jpeg2k postscript tiff raw svg xml webp
+dev-qt/qtwidgets X
+sys-apps/dbus X
+x11-libs/libxkbcommon X
+media-libs/freetype X
+media-libs/libepoxy X
+media-libs/libglvnd X
+media-libs/mesa X vulkan
+gui-libs/gtk X
+x11-libs/gtk+ X
+media-sound/sox mad flac
+# required by media-sound/pavucontrol-4.0::gentoo
+# required by pavucontrol (argument)
+>=dev-cpp/gtkmm-3.24.5 X
+>=dev-java/openjdk-16.0.2_p7 alsa
+# required by media-gfx/feh-3.6.1::gentoo
+# required by feh (argument)
+>=media-libs/imlib2-1.6.1-r2 X
+x11-libs/libva X
+virtual/libcrypt static-libs
+# required by app-editors/neovim-0.5.1::gentoo[lua_single_target_luajit]
+# required by @selected
+# required by @world (argument)
+>=dev-lua/lpeg-1.0.2-r101 lua_targets_luajit
+# required by app-editors/neovim-0.5.1::gentoo[lua_single_target_luajit]
+# required by @selected
+# required by @world (argument)
+>=dev-lua/mpack-1.0.8-r100 lua_targets_luajit
+sys-apps/bubblewrap -suid

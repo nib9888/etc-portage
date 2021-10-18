@@ -1,0 +1,3 @@
+# Remove files that shall not be installed from this list.
+i915/icl_dmc_ver1_07.bin
+rtw88/rtw8821c_fw.bin

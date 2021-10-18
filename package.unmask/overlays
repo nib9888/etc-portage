@@ -1,3 +1,6 @@
 games-action/minecraft-launcher
 net-wireless/rtl8821ce-driver
-
+dev-java/openjdk-bin
+sys-kernel/xanmod-sources
+app-text/pandoc-bin
+dev-java/openjdk

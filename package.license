@@ -7,7 +7,7 @@
 # Enable proprietary licenses
 net-im/discord-bin all-rights-reserved
 www-client/google-chrome google-chrome
-games-action/minecraft-launcher Minecraft-clickwrap-EULA
+games-action/minecraft-launcher Mojang
 games-util/steam-launcher ValveSteamLicense
 
 # Required for firmware binary blobs
@@ -16,3 +16,4 @@ sys-firmware/intel-microcode intel-ucode
 
 # Mics licenses
 net-analyzer/nmap NPSL
+x11-misc/ly WTFPL

@@ -1,52 +1,29 @@
-#######################################
-##                                   ##
-## nib9888's package.accept_keywords ##
-##                                   ##
-#######################################
-
-# 
-# Take certain programs from testing
-#
-
-
-# All s6 stuff is in testing
+gui-wm/wayfire
 sys-apps/s6
 sys-apps/s6-rc
 sys-apps/s6-linux-init
-dev-lang/execline
-dev-libs/skalibs
-
-# Various tor packages are in testing
-www-servers/onionshare
-www-servers/onionshare-cli
-www-client/torbrowser-launcher
-
-# Misc
-
-app-admin/bitwarden-desktop-bin
-app-admin/slstatus **
-app-vim/rust-vim
-games-action/minecraft-launcher
-games-util/steam-launcher
-net-misc/freetube-bin
-net-im/discord-bin
-net-im/teams
-net-im/zoom
-net-p2p/go-ipfs
-net-wireless/rtl8821ce
 media-video/obs-studio
-sys-fs/fatresize
-sys-process/bpytop
-x11-misc/dmenu
-x11-misc/dunst
-=x11-misc/picom-ibhagwan-9999 **
-
-
-#
-# Dependencies
-#
-
-
-#chunky
-=dev-java/openjfx-8.1000
-dev-java/swt
+media-libs/fcft
+dev-java/openjdk-bin
+dev-java/openjfx
+app-vim/rust-vim
+app-misc/grc
+dev-libs/bemenu
+dev-libs/skalibs
+dev-libs/tllist
+dev-util/rustup
+games-action/multimc
+gui-apps/foot
+gui-apps/foot-terminfo
+gui-apps/swappy
+gui-apps/tuigreet
+gui-apps/wf-recorder
+gui-libs/greetd
+net-wireless/rtl8821ce
+dev-lang/execline
+www-client/torbrowser-launcher
+app-text/pandoc-bin
+media-libs/mesa
+dev-java/openjdk
+app-editors/neovim
+media-fonts/iosevka

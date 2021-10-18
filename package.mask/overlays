@@ -1,3 +1,7 @@
 # Mask all overlay packages
 */*::trolltoo
 */*::farfetchd
+*/*::gentoo-zh
+*/*::edgets
+*/*::2xsaiko
+*/*::src_prepare-overlay
